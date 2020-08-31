@@ -13,4 +13,4 @@ END;
 $$
 
 
-CALL new(name);
+CALL new('NomDuPays');

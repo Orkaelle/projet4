@@ -3,7 +3,8 @@ RETURNS TABLE (
     country_name TEXT,
     pop INT,
     density INT,
-    land_area INT
+    land_area INT,
+    update_time TIMESTAMP
 )
 LANGUAGE plpgsql
 AS
@@ -16,4 +17,4 @@ $$
 
 
 
-SELECT * FROM search(name);
+SELECT * FROM search('NomDuPays');
