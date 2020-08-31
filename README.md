@@ -2,11 +2,11 @@
 
 This application allows you to consult and manipulate differents data about countries.
 
-### Before
+### Requierements
 You have to install a postgresql solution on your device before using this application.
 
-### Initialization
-1 - Create the table "Country" :
+### SetUp
+1 - Create the table "country" :
 ```sql
 CREATE TABLE IF NOT EXISTS "country" (
 "country_name" TEXT NULL,
@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS "country" (
 );
 ```
 
-2 - Create the trigger to auto-complete the update column :
+2 - Create the trigger to auto-complete the update column :  
+*Create the function called by the trigger :*
 ```sql
 CREATE FUNCTION maj()
 RETURNS trigger
@@ -28,6 +29,11 @@ BEGIN
     RETURN NEW;
 END;
 $$
+```
+*Create the trigger :*
+```sql
+CREATE TRIGGER maj BEFORE INSERT OR UPDATE ON country
+    FOR EACH ROW EXECUTE PROCEDURE maj();
 ```
 
 3 - Create the function to consult a specific country data :
