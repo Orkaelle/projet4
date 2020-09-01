@@ -144,7 +144,7 @@ Open the file named ['6_insert.sql'](https://github.com/Orkaelle/projet4/blob/de
 
 
 ### Usage
-*To use the code, replace the parameter 'countryname' by the name of the country of your choice.*
+*To use the code, replace if necessary the parameter 'countryname' by the name of the country of your choice.*
 
 #### To view the entire table :
 ```sql
