@@ -1,12 +1,13 @@
 # Countries Data
 
-This application allows you to consult and manipulate differents data about countries.
+### Description
+This application allows you to consult and manipulate differents data about countries. It was developed as part of an AI Developer training with the AI Microsoft School powered by Simplon.
 
 ### Requierements
-You have to install a postgresql solution on your device before using this application.
+You must have a postgresql database solution installed on your device before using this application.
 
 ### SetUp
-1 - Create the table "country" :
+#### 1 - Create the table "country" :
 ```sql
 CREATE TABLE IF NOT EXISTS "country" (
 "country_name" TEXT NULL,
@@ -17,7 +18,7 @@ CREATE TABLE IF NOT EXISTS "country" (
 );
 ```
 
-2 - Create the trigger to auto-complete the update column :  
+#### 2 - Create the trigger to auto-complete the update column :  
 *Create the function called by the trigger :*
 ```sql
 CREATE FUNCTION maj()
@@ -36,7 +37,7 @@ CREATE TRIGGER maj BEFORE INSERT OR UPDATE ON country
     FOR EACH ROW EXECUTE PROCEDURE maj();
 ```
 
-3 - Create the function to consult a specific country data :
+#### 3 - Create the function to consult a specific country data :
 ```sql
 CREATE OR REPLACE FUNCTION search (name TEXT)
 RETURNS TABLE (
@@ -56,7 +57,7 @@ END;
 $$
 ```
 
-4 - Create the procedure to add a country with random values :
+#### 4 - Create the procedure to add a country with random values :
 ```sql
 CREATE OR REPLACE PROCEDURE new (name TEXT)
 LANGUAGE plpgsql
@@ -73,7 +74,7 @@ END;
 $$
 ```
 
-5 - Create the functions to view the interval of density for countries :
+#### 5 - Create the functions to view the interval of density for countries :
 ```sql
 CREATE OR REPLACE FUNCTION interval_density()
 RETURNS TABLE (
@@ -119,27 +120,29 @@ END;
 $$
 ```
 
-6 - Insert the values in the table :  
-Open the file named '6_insert.sql' and copy/paste the code in your database interpretor.
+#### 6 - Insert the values in the table :  
+Open the file named ['6_insert.sql'](https://github.com/Orkaelle/projet4/blob/develop/6_insert.sql) and copy/paste the code in your database interpretor.
 
 
 ### Usage
-To view the entire table :
+(To use the code, replace the parameter 'countryname' by the name of the country of your choice)
+
+#### To view the entire table :
 ```sql
 SELECT * FROM country;
 ```
 
-To view the data of a specific country :
+#### To view the data of a specific country :
 ```sql
 SELECT * FROM search('countryname');
 ```
 
-To add a country with random values :
+#### To add a country with random values :
 ```sql
 CALL new('countryname');
 ```
 
-To view the density interval :  
+#### To view the density interval :  
 *For all countries :*
 ```sql
 SELECT * FROM interval_density ();
