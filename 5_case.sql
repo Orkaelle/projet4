@@ -15,7 +15,8 @@ RETURN QUERY
         WHEN country.density < 500 THEN '100-500'
         ELSE '> 500' END
         AS density_interval
-    FROM country;
+    FROM country
+    ORDER BY density_interval;
 END;
 $$
 

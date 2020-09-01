@@ -90,6 +90,7 @@ $$
 ```
 
 #### 5 - Create the functions to view the interval of density for countries :
+*For all countries :*
 ```sql
 CREATE OR REPLACE FUNCTION interval_density()
 RETURNS TABLE (
@@ -108,10 +109,13 @@ RETURN QUERY
         WHEN country.density < 500 THEN '100-500'
         ELSE '> 500' END
         AS density_interval
-    FROM country;
+    FROM country
+    ORDER BY density_interval;
 END;
 $$
-
+```
+*For a specific country :*
+```sql
 CREATE OR REPLACE FUNCTION interval_density_ctry(ctry TEXT)
 RETURNS TABLE (
     country_name TEXT,
@@ -140,7 +144,7 @@ Open the file named ['6_insert.sql'](https://github.com/Orkaelle/projet4/blob/de
 
 
 ### Usage
-(To use the code, replace the parameter 'countryname' by the name of the country of your choice)
+*To use the code, replace the parameter 'countryname' by the name of the country of your choice.*
 
 #### To view the entire table :
 ```sql
