@@ -140,7 +140,7 @@ $$
 ```
 
 #### 6 - Insert the values in the table :  
-Open the file named ['insert.sql'](https://github.com/Orkaelle/projet4/blob/develop/6_insert.sql) and copy/paste the code in your database interpretor.
+Open the file named ['insert.sql'](https://github.com/Orkaelle/projet4/blob/master/insert.sql) and copy/paste the code in your database interpretor.
 
 
 ### Usage
